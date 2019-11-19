@@ -18,7 +18,15 @@ public class TempatureAktuator extends Aktuator{
     }
 
     public void setWantedTempature(double wantedTempature) {
-        this.wantedTempature = wantedTempature;
+        if(wantedTempature < 0){
+            System.out.println("That's too cold..");
+        }
+        else if(wantedTempature<35){
+            System.out.println("that's too hot!!!");
+        } else{
+            this.wantedTempature = wantedTempature;
+        }
+        
     }
 
     public boolean isIsOn() {
