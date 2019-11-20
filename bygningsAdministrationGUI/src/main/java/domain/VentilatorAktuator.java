@@ -5,8 +5,8 @@ public class VentilatorAktuator extends Aktuator {
     private int percentopen;
     private boolean isOpen;
 
-    public VentilatorAktuator(int pctopn, String name, int id) {
-        super(name, id);
+    public VentilatorAktuator(int pctopn, String name) {
+        super(name);
         this.percentopen = pctopn;
         this.isOpen = false;
     }

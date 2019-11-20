@@ -1,11 +1,13 @@
 package domain;
 
+import java.util.UUID;
+
 public class Co2LevelSensor extends Sensor {
 
     private double co2Level;
 
-    public Co2LevelSensor(double co2Level, boolean isOutside, String name, int id) {
-        super(isOutside, name, id);
+    public Co2LevelSensor(double co2Level, boolean isOutside, String name) {
+        super(isOutside, name);
         this.co2Level = co2Level;
     }
 

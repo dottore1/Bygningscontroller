@@ -1,14 +1,16 @@
 
 package domain;
 
+import java.util.UUID;
+
 
 public class TempatureAktuator extends Aktuator{
     
     private double wantedTempature;
     private boolean isOn;
     
-    public TempatureAktuator(double wt, String name, int id){
-        super(name, id);
+    public TempatureAktuator(double wt, String name){
+        super(name);
         this.wantedTempature = wt;
         this.isOn = false;
     }

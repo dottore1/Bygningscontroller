@@ -5,12 +5,14 @@
  */
 package domain;
 
+import java.util.UUID;
+
 public abstract class Sensor extends Unit {
 
     private boolean isOutside;
 
-    public Sensor(boolean isOutside, String name, int id) {
-        super(name, id);
+    public Sensor(boolean isOutside, String name) {
+        super(name);
         this.isOutside = isOutside;
     }
 }

@@ -1,14 +1,15 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Room extends Unit {
 
     private ArrayList<Aktuator> aktuatorList;
     private ArrayList<Sensor> sensorList;
 
-    public Room(String name, int id) {
-        super(name, id);
+    public Room(String name) {
+        super(name);
         aktuatorList = new ArrayList<>();
         sensorList = new ArrayList<>();
     }
@@ -45,9 +46,9 @@ public class Room extends Unit {
 
     }
 
-    public void removeAktuator(int id) {
+    public void removeAktuator(UUID id) {
         for (Aktuator aktuator : aktuatorList) {
-            if (aktuator.getId() == id) {
+            if (aktuator.getId().equals(id)) {
                 aktuatorList.remove(aktuator);
                 if (aktuatorList.remove(aktuator) == false) {
                     System.out.println("removal unsuccesfull.");
@@ -56,9 +57,9 @@ public class Room extends Unit {
         }
     }
     
-        public void removeSensor(int id) {
+        public void removeSensor(UUID id) {
         for (Sensor sensor : sensorList) {
-            if (sensor.getId() == id) {
+            if (sensor.getId().equals(id)) {
                 sensorList.remove(sensor);
                 if (sensorList.remove(sensor) == false) {
                     System.out.println("removal unsuccesfull.");
@@ -69,7 +70,7 @@ public class Room extends Unit {
         
         @Override
         public String toString(){
-            String txt = "Room: " + super.getName() + " id: " + super.getId();
+            String txt = "Room: " + super.getName();
             return txt;
         }
 

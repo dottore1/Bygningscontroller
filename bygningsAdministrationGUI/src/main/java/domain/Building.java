@@ -1,13 +1,14 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Building extends Unit {
 
     private ArrayList<Room> roomList;
 
-    public Building(String name, int id) {
-        super(name, id);
+    public Building(String name) {
+        super(name);
         roomList = new ArrayList<>();
     }
     
@@ -16,9 +17,9 @@ public class Building extends Unit {
             
     }
         
-            public void removeRoom(int id) {
+            public void removeRoom(UUID id) {
         for (Room room : roomList) {
-            if (room.getId() == id) {
+            if (room.getId().equals(id)) {
                 roomList.remove(room);
                 if (roomList.remove(room) == false) {
                     System.out.println("removal unsuccesfull.");
@@ -29,7 +30,7 @@ public class Building extends Unit {
 
     @Override
     public String toString() {
-        return "Building " + super.getName() + " id: " + super.getId();
+        return "Building: " + super.getName();
     }
     
 }

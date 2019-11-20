@@ -1,8 +1,10 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.UUID;
 
-public class BuildingManager {
+public class BuildingManager implements IBuildingManagementSystem {
 
     private ArrayList<Building> buildingList;
 
@@ -35,14 +37,54 @@ public class BuildingManager {
         this.buildingList.add(building);
     }
 
-    public void removeBuilding(int id) {
+    public void removeBuilding(UUID id) {
         for (Building building : buildingList) {
-            if (building.getId() == id) {
+            if (building.getId().equals(id)) {
                 buildingList.remove(building);
                 if (buildingList.remove(building) == false) {
                     System.out.println("removal unsuccesfull.");
                 }
             }
         }
+    }
+
+    @Override
+    public Map<UUID, String> getBuildingInformation() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Map<UUID, String> getSensorInformation(UUID buildingId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Map<UUID, String> getActuatorInformation(UUID buildingId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public UUID addTemperatureSensor(UUID buildingId, String name) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public UUID addCo2Sensor(UUID buildingId, String name) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeSensor(UUID buildingId, UUID sensorId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public UUID addVentilationActuator(UUID buildingId, String name) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeActuator(UUID buildingId, UUID actuatorId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

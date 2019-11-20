@@ -4,8 +4,8 @@ package domain;
 public class TempatureSensor extends Sensor {
     private double tempatureC;
     
-    public TempatureSensor(double tempatureC, boolean isOutside, String name, int id){
-        super(isOutside, name, id);
+    public TempatureSensor(double tempatureC, boolean isOutside, String name){
+        super(isOutside, name);
         this.tempatureC = tempatureC;
     }
 

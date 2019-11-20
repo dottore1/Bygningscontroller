@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rd01.oop.workshop.acquaintance;
+package domain;
 
 import java.util.List;
 import java.util.Map;
