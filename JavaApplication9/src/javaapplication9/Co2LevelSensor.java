@@ -19,7 +19,7 @@ public class Co2LevelSensor extends Sensor {
 
     @Override
     public String toString() {
-        String txt = super.getName() + "has Co2 level of " + this.co2Level + "PPM";
+        String txt = super.getName() + " has Co2 level of " + this.co2Level + "PPM";
         return txt;
     }
 
