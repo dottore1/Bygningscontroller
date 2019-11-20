@@ -7,6 +7,9 @@ import java.util.UUID;
 public class BuildingManager implements IBuildingManagementSystem {
 
     private ArrayList<Building> buildingList;
+    private Map<UUID, String> buildingsMap;
+    private Map<UUID, String> aktuatorsMap;
+    private Map<UUID, String> sensorsMap;
 
     public BuildingManager() {
         buildingList = new ArrayList<>();
@@ -50,41 +53,119 @@ public class BuildingManager implements IBuildingManagementSystem {
 
     @Override
     public Map<UUID, String> getBuildingInformation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Building building : buildingList) {
+            this.buildingsMap.put(building.getId(), building.getName());
+        }
+        return buildingsMap;
     }
 
     @Override
     public Map<UUID, String> getSensorInformation(UUID buildingId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Building building : buildingList) {
+            if (building.getId().equals(buildingId)) {
+                for (Sensor sensor : building.getSensorList()) {
+                    this.sensorsMap.put(sensor.getId(), sensor.getName());
+                }
+            }
+        }
+        return this.sensorsMap;
     }
 
     @Override
     public Map<UUID, String> getActuatorInformation(UUID buildingId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Building building : buildingList) {
+            if (building.getId().equals(buildingId)) {
+                for (Aktuator aktuator : building.getAktuatorList()) {
+                    this.sensorsMap.put(aktuator.getId(), aktuator.getName());
+                }
+            }
+        }
+        return this.aktuatorsMap;
     }
 
     @Override
-    public UUID addTemperatureSensor(UUID buildingId, String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public UUID addTemperatureSensor(UUID buildingId, Boolean isOutSide, String name) {
+        TempatureSensor tempatureSensor = null;
+        for (Building building : buildingList) {
+            if (building.getId().equals(buildingId)) {
+                building.addSensor(tempatureSensor = new TempatureSensor(isOutSide, name));
+
+            }
+        }
+        return tempatureSensor.getId();
     }
 
     @Override
-    public UUID addCo2Sensor(UUID buildingId, String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public UUID addCo2Sensor(UUID buildingId, Boolean isOutSide, String name) {
+        Co2LevelSensor co2LevelSensor = null;
+        for (Building building : buildingList) {
+            if (building.getId().equals(buildingId)) {
+                building.addSensor(co2LevelSensor = new Co2LevelSensor(false, name));
+
+            }
+        }
+        return co2LevelSensor.getId();
     }
 
     @Override
     public void removeSensor(UUID buildingId, UUID sensorId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        for (Building building : buildingList) {
+            if (building.getId().equals(buildingId)) {
+                for (Sensor sensor : building.getSensorList()) {
+                    if (sensor.getId().equals(sensorId)) {
+                        building.getSensorList().remove(sensor);
+                    }
+                    else{
+                        System.out.println("removal unsucessful");
+                    }
+                }
+
+            }
+        }
+
     }
 
     @Override
-    public UUID addVentilationActuator(UUID buildingId, String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public UUID addVentilationActuator(UUID buildingId, int pctOpn, String name) {
+        VentilatorAktuator ventilatorAktuator = null;
+        for (Building building : buildingList) {
+            if (building.getId().equals(buildingId)) {
+                building.addAktuator(ventilatorAktuator = new VentilatorAktuator(pctOpn, name));
+
+            }
+        }
+        return ventilatorAktuator.getId();
     }
 
     @Override
     public void removeActuator(UUID buildingId, UUID actuatorId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (Building building : buildingList) {
+            if (building.getId().equals(buildingId)) {
+                for (Aktuator aktuator : building.getAktuatorList()) {
+                    if (aktuator.getId().equals(actuatorId)) {
+                        building.getSensorList().remove(aktuator);
+                    }
+                    else{
+                        System.out.println("removal unsucessful");
+                    }
+                }
+
+            }
+        }
     }
+
+    @Override
+    public UUID addTempatureActuator(UUID buildingId, double wt, String name) {
+        TempatureAktuator tempatureAktuator = null;
+        for (Building building : buildingList) {
+            if (building.getId().equals(buildingId)) {
+                building.addAktuator(tempatureAktuator = new TempatureAktuator(wt, name));
+
+            }
+        }
+        return tempatureAktuator.getId();
+        
+    }
+
 }

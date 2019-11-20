@@ -4,24 +4,25 @@ import java.util.UUID;
 
 public class Co2LevelSensor extends Sensor {
 
-    private double co2Level;
+    private double randomCo2Level;
+    private boolean isOutSide;
+    private double range = 15-35;
 
-    public Co2LevelSensor(double co2Level, boolean isOutside, String name) {
+    public Co2LevelSensor(boolean isOutside, String name) {
         super(isOutside, name);
-        this.co2Level = co2Level;
+        this.isOutSide = isOutSide;
+        this.randomCo2Level = (Math.random()*range);
     }
 
-    public double getCo2Level() {
-        return co2Level;
+    public double getRandomCo2Level() {
+        return randomCo2Level;
     }
 
-    public void setCo2Level(double co2Level) {
-        this.co2Level = co2Level;
-    }
+    
 
     @Override
     public String toString() {
-        String txt = super.getName() + "has Co2 level of " + this.co2Level + "PPM";
+        String txt = super.getName() + "has Co2 level of " + this.randomCo2Level + "PPM";
         return txt;
     }
 

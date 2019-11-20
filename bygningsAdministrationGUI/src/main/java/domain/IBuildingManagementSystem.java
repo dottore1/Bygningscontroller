@@ -37,10 +37,11 @@ public interface IBuildingManagementSystem {
     /**
      *
      * @param buildingId Id of building to which sensor should be added.
+     * @param isOutSide
      * @param name Name of the new sensor.
      * @return the UUID of the newly created sensor.
      */
-    public UUID addTemperatureSensor(UUID buildingId, String name);
+    public UUID addTemperatureSensor(UUID buildingId, Boolean isOutSide, String name);
 
     /**
      *
@@ -48,7 +49,7 @@ public interface IBuildingManagementSystem {
      * @param name Name of the new sensor.
      * @return the UUID of the newly created sensor.
      */
-    public UUID addCo2Sensor(UUID buildingId, String name);
+    public UUID addCo2Sensor(UUID buildingId, Boolean isOutSide, String name);
 
     /**
      *
@@ -63,7 +64,8 @@ public interface IBuildingManagementSystem {
      * @param name Name of the new actuator.
      * @return the UUID of the newly created actuator.
      */
-    public UUID addVentilationActuator(UUID buildingId, String name);
+    public UUID addVentilationActuator(UUID buildingId, int pctOpn, String name);
+    public UUID addTempatureActuator(UUID buildingId, double wt, String name);
 
     /**
      *

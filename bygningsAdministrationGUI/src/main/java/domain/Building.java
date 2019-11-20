@@ -3,12 +3,12 @@ package domain;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Room extends Unit {
+public class Building extends Unit {
 
     private ArrayList<Aktuator> aktuatorList;
     private ArrayList<Sensor> sensorList;
 
-    public Room(String name) {
+    public Building(String name) {
         super(name);
         aktuatorList = new ArrayList<>();
         sensorList = new ArrayList<>();
