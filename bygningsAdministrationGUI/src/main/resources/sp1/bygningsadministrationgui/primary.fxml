@@ -1,16 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sp1.bygningsadministrationgui.PrimaryController">
-   <children>
-      <Label text="Primary View" />
-      <Button fx:id="primaryButton" text="Switch to Secondary View" onAction="#switchToSecondary"/>
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <ListView fx:id="lvBuilding" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <left>
+      <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Aktuatorer:">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ListView fx:id="lvAktuator" prefHeight="500.0" prefWidth="200.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btnAktAdd" mnemonicParsing="false" onAction="#btnAktAddEventHandler" text="+" />
+                  <Button fx:id="btnAktDelete" mnemonicParsing="false" onAction="#btnAktDeleteEventHandler" text="-" />
+                  <Button fx:id="btnAktedit" mnemonicParsing="false" onAction="#btnAktEditEventHandler" text="Edit" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Sensorer">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ListView fx:id="lvSensor" prefHeight="500.0" prefWidth="200.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <children>
+                  <Button fx:id="btnSnsAdd" mnemonicParsing="false" onAction="#btnSnsAddEventHandler" text="+" />
+                  <Button fx:id="btnSnsDelete" mnemonicParsing="false" onAction="#btnSnsDeleteEventHandler" text="-" />
+                  <Button fx:id="btnSnsEdit" mnemonicParsing="false" onAction="#btnSnsEditEventHandler" text="Edit" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </right>
+   <bottom>
+      <GridPane maxWidth="800.0" prefHeight="120.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox prefHeight="250.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lblName" text="Name">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtName" maxWidth="250.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="aktSetting" text="Aktuator setting">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtAktuatorSetting" maxWidth="250.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+               <children>
+                  <CheckBox fx:id="chkOutside" mnemonicParsing="false" text="Outside?">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </CheckBox>
+               </children>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets left="100.0" right="100.0" />
+         </BorderPane.margin>
+      </GridPane>
+   </bottom>
+   <top>
+      <HBox maxHeight="20.0" maxWidth="156.0" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="200.0" right="200.0" />
+         </BorderPane.margin>
+         <children>
+            <Button fx:id="btnAddBuilding" mnemonicParsing="false" onAction="#btnAddBuildingEventHandler" text="Add" />
+            <Button fx:id="btnDeleteBuilding" mnemonicParsing="false" onAction="#btnBuildingDeleteEventHandler" text="Delete" />
+            <Button fx:id="btnEditBuilding" mnemonicParsing="false" onAction="#btnBuildingEditEventHandler" text="Edit" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
