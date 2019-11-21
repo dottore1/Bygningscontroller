@@ -8,6 +8,7 @@ package domain;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -17,7 +18,11 @@ public interface IBuildingManagementSystem {
     /**
      *
      * @return Map containing UUIDs of all buildings in the system along with an associated description (i.e. name)
+     * 
      */
+    public ObservableList<Building> getBuildingList();
+    public ObservableList<Aktuator> getAktuatorList(UUID buildingId);
+    public ObservableList<Sensor> getSensorList(UUID buildingId);
     public Map<UUID,String> getBuildingInformation();
 
     /**

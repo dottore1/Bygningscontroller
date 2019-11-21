@@ -1,19 +1,42 @@
 package domain;
 
+import domain.Aktuator;
+import domain.Building;
+import domain.Sensor;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
 
 public class BuildingManager implements IBuildingManagementSystem {
 
-    private ArrayList<Building> buildingList;
+    private ObservableList<Building> buildingList;
     private Map<UUID, String> buildingsMap;
     private Map<UUID, String> aktuatorsMap;
     private Map<UUID, String> sensorsMap;
-
     public BuildingManager() {
-        buildingList = new ArrayList<>();
+        buildingList =  FXCollections.observableArrayList();
     }
+
+    public ObservableList<Building> getBuildingList() {
+        return buildingList;
+    }
+
+    public Map<UUID, String> getBuildingsMap() {
+        return buildingsMap;
+    }
+
+    public Map<UUID, String> getAktuatorsMap() {
+        return aktuatorsMap;
+    }
+
+    public Map<UUID, String> getSensorsMap() {
+        return sensorsMap;
+    }
+    
+    
 
     /*
    public void createBuilding(String name, int id){
@@ -166,6 +189,28 @@ public class BuildingManager implements IBuildingManagementSystem {
         }
         return tempatureAktuator.getId();
         
+    }
+
+    @Override
+    public ObservableList<Aktuator> getAktuatorList(UUID buildingId) {
+        ObservableList<Aktuator> aktuatorList = null;
+        for(Building building: buildingList){
+            if(building.getId().equals(buildingId)){
+                aktuatorList = building.getAktuatorList();
+            }
+        }
+        return aktuatorList;
+    }
+
+    @Override
+    public ObservableList<Sensor> getSensorList(UUID buildingId) {
+        ObservableList<Sensor> sensorList = null;
+        for(Building building: buildingList){
+            if(building.getId().equals(buildingId)){
+                sensorList = building.getSensorList();
+            }
+        }
+        return sensorList;
     }
 
 }

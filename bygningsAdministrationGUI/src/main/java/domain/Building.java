@@ -2,23 +2,25 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Building extends Unit {
 
-    private ArrayList<Aktuator> aktuatorList;
-    private ArrayList<Sensor> sensorList;
+    private ObservableList<Aktuator> aktuatorList;
+    private ObservableList<Sensor> sensorList;
 
     public Building(String name) {
         super(name);
-        aktuatorList = new ArrayList<>();
-        sensorList = new ArrayList<>();
+        aktuatorList = FXCollections.observableArrayList();
+        sensorList = FXCollections.observableArrayList();
     }
 
-    public ArrayList<Aktuator> getAktuatorList() {
+    public ObservableList<Aktuator> getAktuatorList() {
         return aktuatorList;
     }
 
-    public ArrayList<Sensor> getSensorList() {
+    public ObservableList<Sensor> getSensorList() {
         return sensorList;
     }
 
@@ -67,10 +69,13 @@ public class Building extends Unit {
             }
         }
     }
+        public UUID getId(){
+            return super.getId();
+        }
         
         @Override
         public String toString(){
-            String txt = "Room: " + super.getName();
+            String txt = "Building: " + super.getName();
             return txt;
         }
 
